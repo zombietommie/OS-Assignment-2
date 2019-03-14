@@ -23,6 +23,10 @@ def main():
 
     # split the words up into individuals
     words = x.split()
+
+    # testing purpose to print out the one line and print the len of the list
+    print(words)
+    print(len(words))
     
     # test print what's in words
     print(words[1])  # this will print one word from the list 
