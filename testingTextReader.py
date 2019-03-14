@@ -2,7 +2,9 @@
 # OS Assignment 2 
 # Text Reader without threads
 
-# importing the regular expression package
+
+######## TESTING SITE ############
+
 import re
 
 
@@ -15,6 +17,12 @@ def main():
 
     # sub the line for special character test
     x = re.sub("[\'\"+=*.<>\/[]|(){}:]", " ",theFile)  # works
+
+    # read and priont 100 characters as a test
+    #print(f.read(100))  # works
+    
+    # read a line
+    #print(f.readline()) # works
 
     # split the words up into individuals
     words = x.split()
@@ -31,5 +39,6 @@ def main():
 
     # Always close after open
     f.close()
+
 
 main()      # this reads one line of text and splits them up in a list
