@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - TextFrequency",
+            "request": "launch",
+            "mainClass": "TextFrequency",
+            "projectName": "OS-Assignment-2_d932e5d2"
+        }
+    ]
+}
