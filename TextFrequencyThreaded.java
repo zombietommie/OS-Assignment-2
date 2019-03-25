@@ -4,7 +4,7 @@
  * CSCI 4401 OS
  *
  * Assigment 2:
- * Exercise 1 - No threads
+ * Exercise 1 - With threads
  *
  */
 
@@ -14,7 +14,7 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 
-public class TextFrequency {
+public class TextFrequencyThreaded {
 
     public static void main(String[] args) {
 
