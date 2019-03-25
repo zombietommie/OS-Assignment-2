@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - TextFrequencyThreaded",
+            "request": "launch",
+            "mainClass": "TextFrequencyThreaded",
+            "projectName": "OS-Assignment-2_d932e5d2"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - TextFrequency",
             "request": "launch",
             "mainClass": "TextFrequency",
