@@ -11,13 +11,15 @@
 // imports
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.time.Duration;
+import java.time.Instant;
 import java.util.Scanner;
 
 public class ThreadedTextFrequency {
     private static String newData;
     private static float totalCount = 0;
     private static float[] counts = new float[8];
-    private static long startTime = System.nanoTime();
+    private static Instant startTime = Instant.now();
 
     public static void main(String[] args) {
         // First Thread
@@ -83,11 +85,12 @@ public class ThreadedTextFrequency {
                     counts[4], percentWord(counts[4], totalCount), counts[5], percentWord(counts[5], totalCount),
                     counts[6], percentWord(counts[6], totalCount), counts[7], percentWord(counts[7], totalCount));
 
-            long endTime = System.nanoTime();
-            System.out.println((endTime - startTime) / 1000000000 + " seconds runtime.");
+            Instant endTime = Instant.now();
+            long duraiton = Duration.between(startTime, endTime).toSeconds();
+            System.out.println(duraiton + " seconds runtime.");
         });
 
-        ////// Running Thread
+        ////// Running Thread ////////////
         System.out.println("Thread 1 started.");
         thread1.start();
         try {
@@ -98,6 +101,12 @@ public class ThreadedTextFrequency {
         }
         System.out.println("Thread 2 started.");
         thread2.start();
+        try {
+            thread2.join();
+        } catch (InterruptedException e) {
+                System.out.println("Error has occured at the 'try thread2.join()'");
+            e.printStackTrace();
+        }
     }
     
     public static float percentWord(float counts, float total) {

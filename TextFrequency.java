@@ -11,6 +11,8 @@
 // imports
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.time.Duration;
+import java.time.Instant;
 import java.util.Scanner;
 
 
@@ -21,7 +23,7 @@ public class TextFrequency {
         String newData;
         float totalCount = 0;
         float[] counts = new float[8];
-        long startTime = System.nanoTime();
+        Instant startTime = Instant.now();
 
         // try catch to make sure the file is going to be found and read and printed
         try {
@@ -78,8 +80,9 @@ public class TextFrequency {
         System.out.printf("1 letter word: %.0f - %.01f%%\n2 letter words: %.0f - %.01f%%\n3 letter words: %.0f - %.01f%%\n4 letter words: %.0f - %.01f%%\n5 letter words: %.0f - %.01f%%\n6 letter words: %.0f - %.01f%%\n7 letter words: %.0f - %.01f%%\n8 or more letter words: %.0f - %.01f%%\n", counts[0], percentWord(counts[0], totalCount), counts[1], percentWord(counts[1],totalCount), counts[2], percentWord(counts[2],totalCount), counts[3], percentWord(counts[3],totalCount), counts[4], percentWord(counts[4],totalCount), counts[5], percentWord(counts[5],totalCount), counts[6], percentWord(counts[6],totalCount), counts[7], percentWord(counts[7],totalCount));
 
         // get ending time and find the time elapsed 
-        long endTime = System.nanoTime();
-        System.out.println((endTime - startTime) / 1000000000 + " seconds runtime.");
+        Instant endTime = Instant.now();
+        long duration = Duration.between(startTime, endTime).toSeconds();
+        System.out.println(duration + " seconds runtime.");
     }
 
     public static float percentWord(float counts, float total) {
