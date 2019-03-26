@@ -90,13 +90,13 @@ public class ThreadedTextFrequency {
         ////// Running Thread
         System.out.println("Thread 1 started.");
         thread1.start();
-        System.out.println("Trying thread 2.");
         try {
             thread1.join();
         } catch (InterruptedException e) {
                 System.out.println("Error has occured at the 'try thread2.join()'");
             e.printStackTrace();
         }
+        System.out.println("Thread 2 started.");
         thread2.start();
     }
     
