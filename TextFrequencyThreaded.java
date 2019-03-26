@@ -13,11 +13,12 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
+
 class TextFrequency implements Runnable {
-    String newData;
-    float totalCount = 0;
-    float[] counts = new float[8];
-    long startTime = System.nanoTime();
+    private String newData;
+    private float totalCount = 0;
+    private float[] counts = new float[8];
+    private long startTime = System.nanoTime();
 
     public void run() {
 
@@ -57,19 +58,6 @@ class TextFrequency implements Runnable {
                     }
                 }
             }
-            // add and get total words in file
-            int j = 0;
-            while (j < counts.length) {
-                totalCount += counts[j];
-                j++;
-            }
-
-            System.out.printf(
-                    "1 letter word: %.0f - %.01f%%\n2 letter words: %.0f - %.01f%%\n3 letter words: %.0f - %.01f%%\n4 letter words: %.0f - %.01f%%\n5 letter words: %.0f - %.01f%%\n6 letter words: %.0f - %.01f%%\n7 letter words: %.0f - %.01f%%\n8 or more letter words: %.0f - %.01f%%\n",
-                    counts[0], percentWord(counts[0], totalCount), counts[1], percentWord(counts[1], totalCount),
-                    counts[2], percentWord(counts[2], totalCount), counts[3], percentWord(counts[3], totalCount),
-                    counts[4], percentWord(counts[4], totalCount), counts[5], percentWord(counts[5], totalCount),
-                    counts[6], percentWord(counts[6], totalCount), counts[7], percentWord(counts[7], totalCount));
             // File closer Required
             reader.close();
             // catch an error if the file is not found
@@ -77,6 +65,21 @@ class TextFrequency implements Runnable {
             System.out.println("An error has occurred!");
             e.printStackTrace();
         }
+
+        // add and get total words in file
+        int j = 0;
+        while (j < counts.length) {
+            totalCount += counts[j];
+            j++;
+        }
+
+        System.out.printf(
+                "1 letter word: %.0f - %.01f%%\n2 letter words: %.0f - %.01f%%\n3 letter words: %.0f - %.01f%%\n4 letter words: %.0f - %.01f%%\n5 letter words: %.0f - %.01f%%\n6 letter words: %.0f - %.01f%%\n7 letter words: %.0f - %.01f%%\n8 or more letter words: %.0f - %.01f%%\n",
+                counts[0], percentWord(counts[0], totalCount), counts[1], percentWord(counts[1], totalCount), counts[2],
+                percentWord(counts[2], totalCount), counts[3], percentWord(counts[3], totalCount), counts[4],
+                percentWord(counts[4], totalCount), counts[5], percentWord(counts[5], totalCount), counts[6],
+                percentWord(counts[6], totalCount), counts[7], percentWord(counts[7], totalCount));
+
         long endTime = System.nanoTime();
         System.out.println((endTime - startTime) / 1000000000 + " seconds runtime.");
     }
