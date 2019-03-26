@@ -14,7 +14,13 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 
-class TextFrequency implements Runnable {
+class TextFrequencyThreaded implements Runnable {
+    public static void main(String[] args) {
+        TextFrequencyThreaded obj = new TextFrequencyThreaded();
+        Thread thObj = new Thread(obj);
+        thObj.start();
+    }
+
     private String newData;
     private float totalCount = 0;
     private float[] counts = new float[8];
@@ -87,14 +93,5 @@ class TextFrequency implements Runnable {
     public static float percentWord(float counts, float total) {
         float per = (counts / total) * 100;
         return per;
-    }
-}
-
-public class TextFrequencyThreaded {
-
-    public static void main(String[] args) {
-        TextFrequency obj = new TextFrequency();
-        Thread thObj = new Thread(obj);
-        thObj.start();
     }
 }
