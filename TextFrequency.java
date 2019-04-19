@@ -36,7 +36,7 @@ public class TextFrequency {
                 // read the line
                 String data = reader.nextLine();
                 // remove symbols
-                newData = data.replaceAll("[^a-zA-Z0-9_-]", " ");
+                newData = data.replaceAll("^[a-zA-Z_0-9]$", " ");
                 String[] splitWord = newData.split("\\s+");
                 for (int i = 0; i < splitWord.length; i++) {
                     String theWord = splitWord[i];
